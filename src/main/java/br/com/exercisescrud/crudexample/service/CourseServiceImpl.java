@@ -36,6 +36,11 @@ public class CourseServiceImpl implements CourseService {
     public void createNewCourse(Course course) {this.courseRepo.save(course);}
 
     @Override
+    public Course createNewCourseHTTP(Course course) {
+        return this.courseRepo.save(course);
+    }
+
+    @Override
     public void deleteCourse(int course_id) {
         this.courseRepo.deleteById(course_id);
     }

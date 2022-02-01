@@ -26,6 +26,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User createNewUserHTTP(User user) {
+        return this.userRepo.save(user);
+    }
+
+
+
+    @Override
     public User getUserById(int user_id) {
 
         Optional <User> optional = userRepo.findById(user_id);

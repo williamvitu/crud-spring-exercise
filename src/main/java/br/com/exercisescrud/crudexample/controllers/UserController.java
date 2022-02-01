@@ -1,11 +1,14 @@
 package br.com.exercisescrud.crudexample.controllers;
 
 import br.com.exercisescrud.crudexample.entitys.User;
+import br.com.exercisescrud.crudexample.repository.UserRepository;
 import br.com.exercisescrud.crudexample.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -13,6 +16,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private UserRepository userRepo;
+
+
+
+
+    //  View
     @GetMapping("/")
     public String viewHomePage(Model model){
         model.addAttribute("listUsers", userService.getAllUsers() );
@@ -43,7 +52,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/deleteUserByID/{user_id}")
+        @GetMapping("/deleteUserByID/{user_id}")
     public String deleteUserByID(@PathVariable(value = "user_id") int id){
         this.userService.deleteUserById(id);
         return  "redirect:/";
